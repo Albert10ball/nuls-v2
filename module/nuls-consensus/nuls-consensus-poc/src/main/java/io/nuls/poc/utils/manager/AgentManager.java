@@ -118,6 +118,9 @@ public class AgentManager {
      * */
     public Agent getAgentByAgentAddress(Chain chain, byte[] agentAddress){
         for (Agent agent : chain.getAgentList()){
+            if(agent.getDelHeight()>0){
+                continue;
+            }
             if(Arrays.equals(agentAddress, agent.getAgentAddress())){
                 return agent;
             }
